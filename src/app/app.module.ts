@@ -7,8 +7,18 @@ import { MusicBoxComponent } from './music-box/music-box.component';
 import { MusicBoxListComponent } from './music-box-list/music-box-list.component';
 import { LoginComponent } from './login/login.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+
+// Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './/material.module';
+
+// Firebase
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule, AngularFireStorage } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -20,9 +30,16 @@ import { MaterialModule } from './/material.module';
   ],
   imports: [
     BrowserModule,
+    // Material
     BrowserAnimationsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    // Firebase
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
