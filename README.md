@@ -92,4 +92,14 @@ See: https://github.com/angular/angularfire2
 Also run `firebase -init` in order to setup firebase
 
 ## [Part 6] Auth
-Let's add authentication to the application
+Let's add authentication to the application! Create a new auth service: `ng generate service auth`. Our auth service will need the following functions:
+* get loggedIn
+* Login
+* Register
+* Logout
+
+## [Part 7] Add Realtime Database
+Now that we have the auth all done, let's hook up our real time database!
+
+
+
