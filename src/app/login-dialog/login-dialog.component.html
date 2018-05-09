@@ -1,27 +1,37 @@
-<mat-tab-group>
-  <mat-tab label="Login">
-    <form (ngSubmit)="login()" #loginForm="ngForm" class="container">
-      <mat-form-field>
-        <input matInput placeholder="Email" type="email" [(ngModel)]="email" name="email" required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Password" type="password" [(ngModel)]="password" name="password" required>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
-    </form>
-  </mat-tab>
-  <mat-tab label="Register">
-    <form (ngSubmit)="register()" #registerForm="ngForm" class="container">
-      <mat-form-field>
-        <input matInput placeholder="Email" type="email" [(ngModel)]="email" name="email" required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Password" type="password" [(ngModel)]="password" name="password" required>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Confirm Password" type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid || password !== confirmPassword">Register</button>
-    </form>
-  </mat-tab>
-</mat-tab-group>
+<div *ngIf="!loading">
+  <mat-tab-group>
+    <mat-tab label="Login">
+      <form (ngSubmit)="login()" #loginForm="ngForm" class="container">
+        <mat-form-field>
+          <input matInput placeholder="Email" type="email" [(ngModel)]="email" name="email" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password" [(ngModel)]="password" name="password" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+      </form>
+    </mat-tab>
+    <mat-tab label="Register">
+      <form (ngSubmit)="register()" #registerForm="ngForm" class="container">
+        <mat-form-field>
+          <input matInput placeholder="Email" type="email" [(ngModel)]="email" name="email" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password" [(ngModel)]="password" name="password" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Confirm Password" type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid || password !== confirmPassword">Register</button>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+  <div>
+    {{this.error}}
+  </div>
+</div>
+
+<div *ngIf="loading">
+  <mat-spinner [mode]="indeterminate">
+  </mat-spinner>
+</div>

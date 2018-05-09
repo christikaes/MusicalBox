@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -6,18 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public loggedIn = false;
+  public loggedIn$ = this.authService.loggedIn;
 
-  constructor() { }
+  constructor(private dialog: MatDialog, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   login() {
-    alert("Login")
+    this.dialog.open(LoginDialogComponent);
   }
 
   logout() {
-    alert("Logout")
+    this.authService.logout();
   }
 }
