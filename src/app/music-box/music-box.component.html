@@ -1,3 +1,13 @@
-<p>
-  music-box works!
-</p>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Musical Box Name" [(ngModel)]="box.name">
+  </mat-form-field>
+
+  <mat-slide-toggle [(ngModel)]="box.public">Show in public list</mat-slide-toggle>
+</div>
+
+<div class="row" *ngFor="let row of box.data; let i=index">
+  <div [ngClass]="currentNote == j ? 'highlight' : '' " *ngFor="let col of row; let j=index">
+    <mat-checkbox [checked]="col" (change)="toggleNote(i, j)" [disabled]="disabled"></mat-checkbox>
+  </div>
+</div>

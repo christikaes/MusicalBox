@@ -19,3 +19,10 @@ $app-theme: mat-dark-theme($app-primary, $app-accent);
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($app-theme);
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}

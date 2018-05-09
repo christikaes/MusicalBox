@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginDialogComponent implements OnInit {
 
+  public email;
+  public password;
+  public confirmPassword;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  login() {
+    alert("Login")
+  }
+
+  register() {
+    alert("Register")
+  }
 }

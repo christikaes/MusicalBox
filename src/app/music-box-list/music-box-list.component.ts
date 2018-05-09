@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MusicBoxListComponent implements OnInit {
 
+  public musicalBoxList = [
+    {
+      name: 'foo'
+    },
+    {
+      name: 'bar'
+    },
+  ];
+
   constructor() { }
 
   ngOnInit() {

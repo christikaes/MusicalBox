@@ -1,4 +1,19 @@
-<app-login></app-login>
-<app-login-dialog></app-login-dialog>
-<app-music-box-list></app-music-box-list>
-<app-music-box></app-music-box>
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav>
+    <app-login></app-login>
+    <app-login-dialog></app-login-dialog>
+    <app-music-box-list></app-music-box-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Music Box</span>
+    </mat-toolbar>
+    <app-music-box></app-music-box>
+    <button mat-fab class="add-box">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-sidenav-content>
+</mat-sidenav-container>
