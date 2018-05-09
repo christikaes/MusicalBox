@@ -6,6 +6,7 @@ import { MusicBoxComponent } from './music-box/music-box.component';
 import { MusicBoxListComponent } from './music-box-list/music-box-list.component';
 import { LoginComponent } from './login/login.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     LoginDialogComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
