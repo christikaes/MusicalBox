@@ -74,43 +74,22 @@ We are ready to start importing components into our application!
 ## [Part 4] Fill out components
 Let's start by creating a `material.module`. Run: `ng generate module material --module=app --flat` so that we can import all of our material dependencies in one file.
 
-Import material components like button, checkbox etc in your material.module:
+Import material components like button, checkbox etc in your `material.module` Then go ahead fill in the components.
+
+## [Part 5] Add Angular Fire
+Now that we have the basic stub for our components, we will need to hook it up to our database. Go ahead and add angularFire by running `npm install firebase angularfire2 --save` (you might also need: `rxjs-compat`)
+
+Then you will need to import all of the modules in the app.module:
 ```
-import { NgModule } from '@angular/core';
-import {
-  MatButtonModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatListModule,
-  MatDialogModule
-} from '@angular/material';
-
-@NgModule({
-  imports: [
-    MatButtonModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatListModule,
-    MatDialogModule
-  ],
-  exports: [
-    MatButtonModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatListModule,
-    MatDialogModule
-  ]
-  declarations: []
-})
-export class MaterialModule { }
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule
 ```
+See: https://github.com/angular/angularfire2
 
+Also run `firebase -init` in order to setup firebase
 
-
-
+## [Part 6] Auth
+Let's add authentication to the application
