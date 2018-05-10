@@ -98,11 +98,21 @@ Let's add authentication to the application! Create a new auth service: `ng gene
 * Register
 * Logout
 
-## [Part 7] Add Realtime Database
-Now that we have the auth all done, let's hook up our real time database! Create a new database service to get and set data of the musical boxes. Specifically, we need to:
+## [Part 7] Read from Realtime Database
+Now that we have the auth all done, let's hook up our real time database! Create a new database service to get data of the musical boxes. Specifically, we need to:
 * Get all the public music boxes
 * Get all the private music boxes for the current user
-* Update a musical box in the db
 
+We will display these to the Musical Box List component
 
+## [Part 8] Hookup input/output of box
 
+## [Part 9] Write to the database
+Next we want to write the game state to firebase.
+
+## [Part 10] Db permissions
+Make sure that only the current user can write to the db
+
+## [Part 11] Add Redux
+
+## [Part 12] Add PWA
