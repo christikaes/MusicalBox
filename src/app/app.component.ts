@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BoxDbService } from './box-db.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,28 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public box = this.newBox;
 
+  constructor(private boxDbService: BoxDbService) { }
+
   get newBox() {
     return {
       name: 'My Musical Box',
       public: true,
-      data: [[0, 1], [1, 0]], // new Array(8).fill(new Array(25).fill(false)),
-      id: null,
-      soundPack: 'piano'
+      data: new Array(8).fill(new Array(25).fill(false)),
+      id: null
     };
+  }
+
+  addNewBox() {
+    this.updateBox(this.newBox);
+  }
+
+  updateBox(box) {
+    this.box = box;
+    this.boxDbService.updateBox$(box).subscribe(updatedBox => {
+      this.box = updatedBox;
+    }, err => {
+      console.log(err);
+    });
   }
 
   setBox(box) {

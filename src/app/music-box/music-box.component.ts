@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-music-box',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MusicBoxComponent implements OnInit {
   @Input() box;
+  @Output() updateBox = new EventEmitter();
   public currentNote = 0;
 
   public soundPack = [
@@ -30,7 +31,7 @@ export class MusicBoxComponent implements OnInit {
     this.currentNote = 0;
     // Loop through the currentNote index
     const updateNote = () => {
-      setTimeout(() => {
+      setInterval(() => {
         this.currentNote++;
         if (this.currentNote === this.box.data[0].length) {
           this.currentNote = 0;
@@ -42,17 +43,18 @@ export class MusicBoxComponent implements OnInit {
             audio.play();
           }
         });
-        updateNote();
       }, 500);
     };
     updateNote();
   }
 
   public toggleNote(row: number, col: number) {
-    const newBox = Object.assign({}, this.box, { data: JSON.parse(JSON.stringify(this.box.data)) });
+    const newBox = {
+      ...this.box,
+      data: JSON.parse(JSON.stringify(this.box.data))
+    };
     newBox.data[row][col] = !newBox.data[row][col];
-    // this.updateBox.emit(newBox);
+    this.updateBox.emit(newBox);
   }
-
 
 }

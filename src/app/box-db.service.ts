@@ -6,6 +6,8 @@ import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/observable/of';
 import { withLatestFrom } from 'rxjs-compat/operator/withLatestFrom';
+import { _throw } from 'rxjs/observable/throw';
+import { fromPromise } from 'rxjs/observable/fromPromise';
 
 @Injectable({
   providedIn: 'root'
@@ -38,4 +40,22 @@ export class BoxDbService {
       }, []);
     });
   }
+
+  // Adds a new box into the database
+  updateBox$(box): any {
+    const user = this.afAuth.auth.currentUser;
+    if (!user) {
+      return _throw('User is not logged in');
+    }
+
+    // If the user is logged in
+    const uid = user.uid;
+    if (box.id) {
+      // This is a previously saved box, so update it
+      return fromPromise(this.afDatabase.object('players/' + uid + '/' + box.id).set(box)).map(_ => box);
+    }
+    // This box has not been saved before, so add it
+    return fromPromise(this.afDatabase.list('players/' + uid).push(box)).map(newBox => ({ ...box, id: newBox.key }));
+  }
 }
+

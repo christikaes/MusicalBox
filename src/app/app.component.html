@@ -10,7 +10,7 @@
       </button>
       <span>Music Box</span>
     </mat-toolbar>
-    <app-music-box [box]="box"></app-music-box>
+    <app-music-box [box]="box" (updateBox)="updateBox($event)"></app-music-box>
     <button mat-fab class="add-box" (click)="addNewBox()">
       <mat-icon>add</mat-icon>
     </button>

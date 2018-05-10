@@ -1,9 +1,9 @@
 <div>
   <mat-form-field>
-    <input matInput placeholder="Musical Box Name" [(ngModel)]="box.name">
+    <input matInput placeholder="Musical Box Name" [(ngModel)]="box.name" (onChange)="updateBox.emit(box)">
   </mat-form-field>
 
-  <mat-slide-toggle [(ngModel)]="box.public">Show in public list</mat-slide-toggle>
+  <mat-slide-toggle [(ngModel)]="box.public" (onChange)="updateBox.emit(box)">Show in public list</mat-slide-toggle>
 </div>
 
 <div class="row" *ngFor="let row of box.data; let i=index">
