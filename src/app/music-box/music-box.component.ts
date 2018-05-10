@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-music-box',
@@ -6,13 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./music-box.component.scss']
 })
 export class MusicBoxComponent implements OnInit {
-  public box = {
-    name: 'My Musical Box',
-    public: true,
-    data: [[0, 1], [1, 0]], // new Array(8).fill(new Array(25).fill(false)),
-    id: null,
-    soundPack: 'piano'
-  };
+  @Input() box;
   public currentNote = 0;
 
   public soundPack = [

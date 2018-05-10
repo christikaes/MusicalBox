@@ -1,7 +1,7 @@
 <mat-sidenav-container class="container">
   <mat-sidenav #sidenav>
     <app-login></app-login>
-    <app-music-box-list></app-music-box-list>
+    <app-music-box-list (setBox)="setBox($event)"></app-music-box-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -10,8 +10,8 @@
       </button>
       <span>Music Box</span>
     </mat-toolbar>
-    <app-music-box></app-music-box>
-    <button mat-fab class="add-box">
+    <app-music-box [box]="box"></app-music-box>
+    <button mat-fab class="add-box" (click)="addNewBox()">
       <mat-icon>add</mat-icon>
     </button>
   </mat-sidenav-content>

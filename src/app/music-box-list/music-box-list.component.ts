@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BoxDbService } from '../box-db.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { BoxDbService } from '../box-db.service';
   styleUrls: ['./music-box-list.component.scss']
 })
 export class MusicBoxListComponent implements OnInit {
+  @Output() setBox = new EventEmitter();
   public myMusicalBoxList$ = this.boxDbService.myMusicalBoxList$;
   public publicMusicalBoxList$ = this.boxDbService.publicMusicalBoxList$;
 
