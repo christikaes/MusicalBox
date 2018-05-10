@@ -99,7 +99,10 @@ Let's add authentication to the application! Create a new auth service: `ng gene
 * Logout
 
 ## [Part 7] Add Realtime Database
-Now that we have the auth all done, let's hook up our real time database!
+Now that we have the auth all done, let's hook up our real time database! Create a new database service to get and set data of the musical boxes. Specifically, we need to:
+* Get all the public music boxes
+* Get all the private music boxes for the current user
+* Update a musical box in the db
 
 
 
