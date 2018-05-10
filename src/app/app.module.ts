@@ -20,6 +20,13 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule, AngularFireStorage } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+// Redux
+import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
+declare var require: any;
+const persistState = require('redux-localstorage');
+import { IAppState, INITITAL_STATE } from './app.store';
+import { rootReducer } from './app.reducer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,10 +46,28 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    // Redux
+    NgReduxModule
   ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [LoginDialogComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(
+    ngRedux: NgRedux<IAppState>,
+    devToolsExtension: DevToolsExtension
+  ) {
+    ngRedux.configureStore(
+      rootReducer,
+      INITITAL_STATE,
+      [],
+      [
+        devToolsExtension.enhancer(),
+        persistState()
+      ]
+    );
+  }
+}

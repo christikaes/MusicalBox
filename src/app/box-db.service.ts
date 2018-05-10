@@ -35,7 +35,7 @@ export class BoxDbService {
   get publicMusicalBoxList$() {
     return this.afDatabase.list('players/').valueChanges().map(players => {
       return players.reduce((games: any, player: any) => {
-        const playerGames = Object.values(player).filter(game => game.public);
+        const playerGames = Object.values(player).filter((game: any) => game.public);
         return [...games, ...playerGames];
       }, []);
     });

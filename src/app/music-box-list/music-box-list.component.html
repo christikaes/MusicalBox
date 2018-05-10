@@ -1,7 +1,7 @@
 <mat-nav-list>
   <h3 mat-subheader>My Boxes</h3>
-  <mat-list-item *ngFor="let box of (myMusicalBoxList$ | async)" (click)="setBox.emit(box)">{{box.name}}</mat-list-item>
+  <mat-list-item *ngFor="let box of (myMusicalBoxList$ | async)" (click)="setBox(box)">{{box.name}}</mat-list-item>
   <mat-divider></mat-divider>
   <h3 mat-subheader>Public</h3>
-  <mat-list-item *ngFor="let box of (publicMusicalBoxList$ | async)" (click)="setBox.emit(box)">{{box.name}}</mat-list-item>
+  <mat-list-item *ngFor="let box of (publicMusicalBoxList$ | async)" (click)="setBox(box)">{{box.name}}</mat-list-item>
 </mat-nav-list>

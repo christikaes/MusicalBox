@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-redux/store": "^7.1.1",
     "@angular/animations": "^6.0.0",
     "@angular/cdk": "^6.0.0",
     "@angular/common": "^6.0.0",
@@ -24,7 +25,10 @@
     "@angular/router": "^6.0.0",
     "angularfire2": "^5.0.0-rc.7",
     "core-js": "^2.5.4",
+    "expect": "^22.4.3",
     "firebase": "^5.0.1",
+    "redux": "^4.0.0",
+    "redux-localstorage": "^0.4.1",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.1.0",
     "zone.js": "^0.8.26"

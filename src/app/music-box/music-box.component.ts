@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { select } from '@angular-redux/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-music-box',
@@ -6,8 +8,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./music-box.component.scss']
 })
 export class MusicBoxComponent implements OnInit {
-  @Input() box;
   @Output() updateBox = new EventEmitter();
+  @select() private box$: Observable<any>;
+
+  public box;
   public currentNote = 0;
 
   public soundPack = [
@@ -25,6 +29,10 @@ export class MusicBoxComponent implements OnInit {
 
   ngOnInit() {
     this.restart();
+    this.box$.subscribe(newBox => {
+      this.box = newBox;
+      this.restart();
+    });
   }
 
   get disabled() {
