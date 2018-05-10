@@ -27,6 +27,10 @@ export class MusicBoxComponent implements OnInit {
     this.restart();
   }
 
+  get disabled() {
+    return this.box.public;
+  }
+
   private restart() {
     this.currentNote = 0;
     // Loop through the currentNote index

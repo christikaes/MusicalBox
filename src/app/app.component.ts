@@ -14,7 +14,7 @@ export class AppComponent {
   get newBox() {
     return {
       name: 'My Musical Box',
-      public: true,
+      public: false,
       data: new Array(8).fill(new Array(25).fill(false)),
       id: null
     };
