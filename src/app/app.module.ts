@@ -19,6 +19,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule, AngularFireStorage } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 // Redux
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
@@ -47,8 +48,12 @@ import { rootReducer } from './app.reducer';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+
     // Redux
-    NgReduxModule
+    NgReduxModule,
+
+    // PWA
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent],
